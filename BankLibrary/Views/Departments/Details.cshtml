@@ -1,0 +1,23 @@
+﻿@model BankLibrary.Department
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Додаткова інформація</h1>
+
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Number)</h4>
+    <img src="@Html.DisplayFor(model => model.Photo)"  align="left" />
+    <hr />
+    <p>
+        @Html.DisplayFor(model => model.Info)
+    </p>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <div>
+        <a asp-action="Index" asp-route-id="@Model.BankId" asp-route-name="@Model.Bank.Name">Back to List</a>
+    </div>
+</div>

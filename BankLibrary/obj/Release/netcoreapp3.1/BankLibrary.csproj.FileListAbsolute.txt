@@ -186,3 +186,5 @@ C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Release\netcoreapp3.1\BankLibrar
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Release\netcoreapp3.1\BankLibrary.csproj.CoreCompileInputs.cache
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Release\netcoreapp3.1\BankLibrary.genruntimeconfig.cache
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\BankLibary - Web Deploy\profile.arm.json
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Release\netcoreapp3.1\Properties\serviceDependencies.BankLibary - Web Deploy.json
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Release\netcoreapp3.1\Properties\serviceDependencies.json

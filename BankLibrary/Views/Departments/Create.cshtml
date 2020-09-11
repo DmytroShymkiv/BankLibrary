@@ -4,7 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Додавання відділення до банку" @ViewBag.BankName "</h1>
+<h1>Додавання відділення до банку 
+ <br/>   
+"@ViewBag.BankName "</h1>
 
 <hr />
 <div class="row">
@@ -23,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Info" class="control-label"></label>
-                <input asp-for="Info" class="form-control" />
+                <textarea asp-for="Info" class="form-control" ></textarea>
                 <span asp-validation-for="Info" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -46,7 +48,7 @@
 
 
 <div>
-    <a asp-action="Index" asp-route-id="@ViewBag.BankId" asp-route-name="@ViewBag.BankName">Back to List</a>
+    <a asp-action="Index" asp-route-id="@ViewBag.BankId" asp-route-name="@ViewBag.BankName">Повернутись</a>
 </div>
 
 @section Scripts {

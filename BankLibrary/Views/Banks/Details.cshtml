@@ -8,13 +8,13 @@
 
 <div>
     <h4>@Html.DisplayFor(model => model.Name)</h4>
-    <img src="@Html.DisplayFor(model => model.Logo)" align="left" />
-    <hr />
-    <p>
+    <img style="padding: 20px;" src="@Html.DisplayFor(model => model.Logo)" alt="@Html.DisplayFor(model => model.Name)" align="left" />
+    
+    <p style="white-space: pre-line">
         @Html.DisplayFor(model => model.Info)
     </p>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редагувати</a> |
+    <a asp-action="Index">Повернутись</a>
 </div>

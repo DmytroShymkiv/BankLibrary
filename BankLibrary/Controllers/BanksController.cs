@@ -54,7 +54,7 @@ namespace BankLibrary.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(bank);
         }
         // GET: Banks/Create
@@ -69,17 +69,10 @@ namespace BankLibrary.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Info,Logo")] Bank bank)
-        {
-            bool isIndentity = true;
-            foreach (var item in _context.Bank)
-            {
-                if (item.Name == bank.Name)
-                {
-                    isIndentity = false;
-                    ModelState.AddModelError(string.Empty, "Такий банк вже існує");
-                }
-            }
-            if (ModelState.IsValid && isIndentity)
+        {          
+            if (BankExist(bank))
+                ModelState.AddModelError(string.Empty, "Такий банк вже існує");
+            if (ModelState.IsValid)
             {
                 _context.Add(bank);
                 await _context.SaveChangesAsync();
@@ -96,7 +89,8 @@ namespace BankLibrary.Controllers
                 return NotFound();
             }
 
-            var bank = await _context.Bank.FindAsync(id);
+            var bank = await _context.Bank
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (bank == null)
             {
                 return NotFound();
@@ -115,16 +109,7 @@ namespace BankLibrary.Controllers
             {
                 return NotFound();
             }
-            bool isIndentity = true;
-            foreach (var item in _context.Bank)
-            {
-                if (item.Name == bank.Name)
-                {
-                    isIndentity = false;
-                    ModelState.AddModelError(string.Empty, "Такий банк вже існує");
-                }
-            }
-            if (ModelState.IsValid && isIndentity)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -185,6 +170,10 @@ namespace BankLibrary.Controllers
         private bool BankExists(int id)
         {
             return _context.Bank.Any(e => e.Id == id);
+        }
+        private bool BankExist(Bank bank)
+        {
+            return _context.Bank.Any(b => b.Name == bank.Name);
         }
     }
 }

@@ -8,16 +8,15 @@
 
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Number)</h4>
-    <img src="@Html.DisplayFor(model => model.Photo)"  align="left" />
+    <h4>№ @Html.DisplayFor(model => model.Number)</h4>
+    <img style="padding: 20px;" src="@Html.DisplayFor(model => model.Photo)" alt="@Html.DisplayFor(model => model.Number)" align="left" />
     <hr />
-    <p>
+    <p style="white-space: pre-line">
         @Html.DisplayFor(model => model.Info)
     </p>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <div>
-        <a asp-action="Index" asp-route-id="@Model.BankId" asp-route-name="@Model.Bank.Name">Back to List</a>
-    </div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редагувати</a> |
+    <a asp-action="Index" asp-route-id="@Model.BankId" asp-route-name="@Model.Bank.Name">Повернутись</a>
+   
 </div>

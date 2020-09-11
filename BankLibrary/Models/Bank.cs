@@ -10,12 +10,13 @@ namespace BankLibrary
         {
             Department = new HashSet<Department>();
         }
-
+        [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Назва не може бути порожньою")]
         [StringLength(50)]
         [Display(Name = "Назва")]
         public string Name { get; set; }
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Інформація")]
         public string Info { get; set; }
         public string Logo { get; set; }

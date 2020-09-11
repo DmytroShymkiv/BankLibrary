@@ -166,7 +166,6 @@ C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\ru\Microsoft
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\BankLibrary.csprojAssemblyReference.cache
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\Banks\Create.cshtml.g.cs
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\Banks\Delete.cshtml.g.cs
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\Banks\Details.cshtml.g.cs
@@ -183,6 +182,9 @@ C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Edit.cshtml.g.cs
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Index.cshtml.g.cs
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\BankLibrary.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\BankLibary - Web Deploy\profile.arm.json
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\BankLibrary.csproj.CoreCompileInputs.cache
 C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\BankLibrary.genruntimeconfig.cache
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\obj\Debug\netcoreapp3.1\BankLibrary.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.BankLibary - Web Deploy.json
+C:\Users\pc\Desktop\BankLibrary\BankLibrary\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\BankLibary - Web Deploy\profile.arm.json

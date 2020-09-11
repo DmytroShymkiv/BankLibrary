@@ -19,7 +19,7 @@ namespace BankLibrary.Controllers
         }
 
         // GET: Departments
-        public async Task<IActionResult> Index(int? id, string name)
+        public async Task<IActionResult> Index(int? id, string? name)
         {
             if (id == null) return RedirectToAction("Bank", "Index");
             ViewBag.BankName = name;
@@ -66,6 +66,8 @@ namespace BankLibrary.Controllers
         public async Task<IActionResult> Create(int bankId, [Bind("Id,BankId,Number,CityId,Info,NumberOfEmployers,Photo")] Department department)
         {
             department.BankId = bankId;
+            if (DepartmentExist(department))
+                return RedirectToAction("Index", "Departments", new { id = department.BankId, name = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name });
             if (ModelState.IsValid)
             {
                 _context.Add(department);
@@ -101,10 +103,13 @@ namespace BankLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BankId,Number,CityId,Info,NumberOfEmployers,Photo")] Department department)
         {
+            
+
             if (id != department.Id)
             {
                 return NotFound();
             }
+            
 
             if (ModelState.IsValid)
             {
@@ -124,8 +129,10 @@ namespace BankLibrary.Controllers
                         throw;
                     }
                 }
+                ViewBag.BankId = department.BankId;
+                ViewBag.BankName = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name;
                 return RedirectToAction("Index", "Departments", new { id = department.BankId, name = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name });
-            }
+            }     
             ViewData["BankId"] = new SelectList(_context.Bank, "Id", "Name", department.BankId);
             ViewData["CityId"] = new SelectList(_context.City, "Id", "Name", department.CityId);
             return View(department);
@@ -134,6 +141,7 @@ namespace BankLibrary.Controllers
         // GET: Departments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -165,6 +173,10 @@ namespace BankLibrary.Controllers
         private bool DepartmentExists(int id)
         {
             return _context.Department.Any(e => e.Id == id);
+        }
+        private bool DepartmentExist(Department department)
+        {
+            return _context.Department.Any(d=>d.Number==department.Number && d.BankId == department.BankId && d.CityId==department.CityId);
         }
     }
 }

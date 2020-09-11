@@ -55,16 +55,11 @@ namespace BankLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] City city)
         {
-            bool isIndentity = true;
-            foreach (var item in _context.City)
-            {
-                if (item.Name == city.Name)
-                {
-                    isIndentity = false;
-                    ModelState.AddModelError(string.Empty, "Таке місто вже існує");
-                }
-            }
-            if (ModelState.IsValid && isIndentity)
+            if (CityExist(city))
+                ModelState.AddModelError(string.Empty, "Таке місто вже існує");
+            
+            
+            if (ModelState.IsValid)
             {
                 _context.Add(city);
                 await _context.SaveChangesAsync();
@@ -100,16 +95,8 @@ namespace BankLibrary.Controllers
             {
                 return NotFound();
             }
-            bool isIndentity = true;
-            foreach (var item in _context.City)
-            {
-                if (item.Name == city.Name)
-                {
-                    isIndentity = false;
-                    ModelState.AddModelError(string.Empty, "Таке місто вже існує");
-                }
-            }
-            if (ModelState.IsValid && isIndentity)
+          
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -156,6 +143,9 @@ namespace BankLibrary.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var city = await _context.City.FindAsync(id);
+            var departmentsInCity = _context.Department.Any(d => d.CityId == id);
+            if (departmentsInCity)
+                return RedirectToAction(nameof(Index));
             _context.City.Remove(city);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -164,6 +154,10 @@ namespace BankLibrary.Controllers
         private bool CityExists(int id)
         {
             return _context.City.Any(e => e.Id == id);
+        }
+        private bool CityExist(City city)
+        {
+            return _context.City.Any(c => c.Name == city.Name);
         }
     }
 }

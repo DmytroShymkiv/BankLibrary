@@ -91,6 +91,8 @@ namespace BankLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] City city)
         {
+            if (CityExist(city))
+                ModelState.AddModelError(string.Empty, "Таке місто вже існує");
             if (id != city.Id)
             {
                 return NotFound();
@@ -157,7 +159,7 @@ namespace BankLibrary.Controllers
         }
         private bool CityExist(City city)
         {
-            return _context.City.Any(c => c.Name == city.Name);
+            return _context.City.Any(c => c.Name == city.Name && c.Id!=city.Id);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace BankLibrary.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction("Index", "Departments", new { id = bank.Id, name = bank.Name });
+            return RedirectToAction("Index", "Departments", new { id = bank.Id});
         }
         public async Task<IActionResult> Details(int? id)
         {
@@ -105,6 +105,8 @@ namespace BankLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Info,Logo")] Bank bank)
         {
+            if (BankExist(bank))
+                ModelState.AddModelError(string.Empty, "Такий банк вже існує");
             if (id != bank.Id)
             {
                 return NotFound();
@@ -173,7 +175,7 @@ namespace BankLibrary.Controllers
         }
         private bool BankExist(Bank bank)
         {
-            return _context.Bank.Any(b => b.Name == bank.Name);
+            return _context.Bank.Any(b => b.Name == bank.Name && b.Id!=bank.Id);
         }
     }
 }

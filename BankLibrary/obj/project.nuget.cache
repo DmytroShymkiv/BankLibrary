@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GwnaVk4l6Nx75hHl/d3RvWBWbs9dV76Fa5RSGU3mnRw8NVeSESupjbOW8GEwYpKarkTV52wCGjJfClYi+9aJCw==",
+  "dgSpecHash": "JlR9hwtdfjtiSxPeBQd7VMVuwoGJr6BEnZQRPgG9XE4NzMo9Tjw+2OsyS+9ijA6yeQAVqigH9534a4usfZ0fwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Desktop\\3 КУРС\\WEB-технології\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

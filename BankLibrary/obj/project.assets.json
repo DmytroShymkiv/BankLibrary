@@ -8827,11 +8827,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\Desktop\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Desktop\\3 КУРС\\WEB-технології\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
       "projectName": "BankLibrary",
-      "projectPath": "C:\\Users\\pc\\Desktop\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
+      "projectPath": "C:\\Users\\pc\\Desktop\\3 КУРС\\WEB-технології\\BankLibrary\\BankLibrary\\BankLibrary.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\Desktop\\BankLibrary\\BankLibrary\\obj\\",
+      "outputPath": "C:\\Users\\pc\\Desktop\\3 КУРС\\WEB-технології\\BankLibrary\\BankLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

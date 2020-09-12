@@ -19,10 +19,10 @@ namespace BankLibrary.Controllers
         }
 
         // GET: Departments
-        public async Task<IActionResult> Index(int? id, string? name)
+        public async Task<IActionResult> Index(int? id)
         {
             if (id == null) return RedirectToAction("Bank", "Index");
-            ViewBag.BankName = name;
+            ViewBag.BankName = _context.Bank.Where(b=>b.Id==id).FirstOrDefault().Name;
             ViewBag.BankId = id;
             var departmentsByBank = _context.Department.Where(department => department.BankId == id).Include(department => department.City);
             return View(await departmentsByBank.ToListAsync());
@@ -67,15 +67,18 @@ namespace BankLibrary.Controllers
         {
             department.BankId = bankId;
             if (DepartmentExist(department))
-                return RedirectToAction("Index", "Departments", new { id = department.BankId, name = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name });
+                ModelState.AddModelError(string.Empty, "Таке відділення вже існує");
+ 
             if (ModelState.IsValid)
             {
                 _context.Add(department);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Departments", new { id = bankId, name = _context.Bank.Where(bank => bank.Id == bankId).FirstOrDefault().Name });
+                return RedirectToAction("Index", "Departments", new { id = bankId});
             }
             ViewData["CityId"] = new SelectList(_context.City, "Id", "Name", department.CityId);
-            return RedirectToAction("Index", "Departments", new { id = bankId, name = _context.Bank.Where(bank => bank.Id == bankId).FirstOrDefault().Name });
+            ViewBag.BankId = bankId;
+            ViewBag.BankName = _context.Bank.Where(bank => bank.Id == bankId).FirstOrDefault().Name;
+            return View(department);
         }
 
         // GET: Departments/Edit/5
@@ -91,6 +94,8 @@ namespace BankLibrary.Controllers
             {
                 return NotFound();
             }
+            ViewBag.BankId = department.BankId;
+            ViewBag.BankName = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name;
             ViewData["BankId"] = new SelectList(_context.Bank, "Id", "Name", department.BankId);
             ViewData["CityId"] = new SelectList(_context.City, "Id", "Name", department.CityId);
             return View(department);
@@ -103,7 +108,11 @@ namespace BankLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BankId,Number,CityId,Info,NumberOfEmployers,Photo")] Department department)
         {
-            
+            ViewBag.BankId = department.BankId;
+            ViewBag.BankName = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name;
+            if (DepartmentExist(department))
+                ModelState.AddModelError(string.Empty, "Таке відділення вже існує");
+
 
             if (id != department.Id)
             {
@@ -129,9 +138,8 @@ namespace BankLibrary.Controllers
                         throw;
                     }
                 }
-                ViewBag.BankId = department.BankId;
-                ViewBag.BankName = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name;
-                return RedirectToAction("Index", "Departments", new { id = department.BankId, name = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name });
+                
+                return RedirectToAction("Index", "Departments", new { id = department.BankId });
             }     
             ViewData["BankId"] = new SelectList(_context.Bank, "Id", "Name", department.BankId);
             ViewData["CityId"] = new SelectList(_context.City, "Id", "Name", department.CityId);
@@ -167,7 +175,7 @@ namespace BankLibrary.Controllers
             var department = await _context.Department.FindAsync(id);
             _context.Department.Remove(department);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Departments", new { id = department.BankId, name = _context.Bank.Where(bank => bank.Id == department.BankId).FirstOrDefault().Name });
+            return RedirectToAction("Index", "Departments", new { id = department.BankId });
         }
 
         private bool DepartmentExists(int id)
@@ -176,7 +184,7 @@ namespace BankLibrary.Controllers
         }
         private bool DepartmentExist(Department department)
         {
-            return _context.Department.Any(d=>d.Number==department.Number && d.BankId == department.BankId && d.CityId==department.CityId);
+            return _context.Department.Any(d=>d.Number==department.Number && d.BankId == department.BankId && d.CityId==department.CityId &&d.Id!=department.Id);
         }
     }
 }

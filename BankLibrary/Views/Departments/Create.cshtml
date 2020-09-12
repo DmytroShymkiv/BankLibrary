@@ -13,7 +13,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="form-group">
                 <label asp-for="Number" class="control-label"></label>
                 <input asp-for="Number" class="form-control" />
@@ -22,10 +21,11 @@
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
                 <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+                <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Info" class="control-label"></label>
-                <textarea asp-for="Info" class="form-control" ></textarea>
+                <textarea asp-for="Info" class="form-control"></textarea>
                 <span asp-validation-for="Info" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,7 +48,7 @@
 
 
 <div>
-    <a asp-action="Index" asp-route-id="@ViewBag.BankId" asp-route-name="@ViewBag.BankName">Повернутись</a>
+    <a asp-action="Index" asp-route-id="@ViewBag.BankId">Повернутись</a>
 </div>
 
 @section Scripts {
